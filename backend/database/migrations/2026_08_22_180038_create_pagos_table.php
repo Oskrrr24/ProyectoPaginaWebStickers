@@ -1,0 +1,48 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('pagos', function (Blueprint $table) {
+            $table->id('id_pago');
+
+            $table->foreignId('id_compra')
+                ->constrained('compras', 'id_compra')
+                ->cascadeOnUpdate()
+                ->restrictOnDelete();
+
+            $table->string('proveedor');
+
+            $table->string('provider_transaction_id')->nullable();
+
+            $table->decimal('monto', 12, 2);
+
+            $table->string('estado');
+
+            $table->text('token')->nullable();
+
+            $table->string('authorization_code')->nullable();
+            $table->string('payment_method')->nullable();
+
+            $table->timestamp('paid_at')->nullable();
+
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('pagos');
+    }
+};
