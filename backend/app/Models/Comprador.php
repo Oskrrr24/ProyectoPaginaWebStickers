@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comprador extends Model
 {
-    protected $table = 'comrpadores';
+    protected $table = 'compradores';
 
     protected $primaryKey = 'id_comprador';
 

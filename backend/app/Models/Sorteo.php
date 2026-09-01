@@ -16,7 +16,7 @@ class Sorteo extends Model
         'fecha_inicio',
         'fecha_fin',
         'estado',
-        'ultimo_numero asignado',
+        'ultimo_numero_asignado',
     ];
 
     protected $casts = [
